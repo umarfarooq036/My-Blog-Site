@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%-include("../partials/navbar.ejs")%>
+        <div class="container">
+      <h1>All Blogs</h1>
+      <hr />
+      <h2><%=foundBlog.title%></h2>
+      <p><%= foundBlog.description %></p>
+      
+      <div><img src="<%=foundBlog.image%>" alt="" /></div>
+
+      <a href="/blogs" class="btn btn-primary">Go Back</a>
+
+      <a href="/blogs/<%=foundBlog.id%>/edit" class="btn btn-success">edit</a>
+
+      <form action="/blogs/<%=foundBlog.id%>?_method=delete" method="post">
+        <button class="btn btn-danger">Delete</button>
+      </form>
+
+
+
+    </div>
+  </body>
+</html>

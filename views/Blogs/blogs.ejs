@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Blogs</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+    <div class="container">
+      <h1>All Blogs</h1>
+      <hr />
+      <%for (let blog of blogs){%>
+      <h3><%=blog.title%></h3>
+      <img src="<%=blog.image%>" alt="" />
+      <p><%=blog.description%></p>
+      <a href="/blogs/<%= blog.id %>" class="btn btn-warning">More</a>
+      <hr />
+      <%}%>
+    </div>
+  
+    <script>public/js/bootstrap.min.js</script>
+  </body>
+</html>
