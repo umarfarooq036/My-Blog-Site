@@ -11,10 +11,10 @@
   <body>
     <%-include("../partials/navbar.ejs")%>
         <div class="container">
-      <h1>All Blogs</h1>
+      <h1>You Selected " <%=foundBlog.title%> " blog</h1>
       <hr />
       <h2><%=foundBlog.title%></h2>
-      <p><%= foundBlog.description %></p>
+      <p><%=foundBlog.description %></p>
       
       <div><img src="<%=foundBlog.image%>" alt="" /></div>
 

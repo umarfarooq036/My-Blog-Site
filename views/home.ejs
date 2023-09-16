@@ -1,22 +1,239 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("partials/navbar.ejs" ,{name})%>
+
+    <h2 style="text-align: center">Welcome to Blogging Site</h2>
+    <hr />
+    <p>
+      Lorem ipsum dolor sit, amet consetetur adipisicing elit. Obcaecati ut
+      praesentium nam earum esse ipsam harum distinctio eum labore beatae iusto
+      iste quasi, pariatur rem rerum natus veniam nobis deleniti?
+    </p>
+
+    <script>
+      src = "public/js/bootstrap.min.js";
+    </script>
+  </body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <%- include("partials/navbar.ejs")%>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogging Site</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Include your Bootstrap-based navbar here or keep the existing one -->
+    <%- include("partials/navbar.ejs" ,{name})%>
 
-    <h2>Home Page</h2>
-    <hr>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati ut praesentium nam earum esse ipsam harum distinctio eum labore beatae iusto iste quasi, pariatur rem rerum natus veniam nobis deleniti?</p>
+    <div class="container mt-5">
+      <h2 class="text-center">Welcome to Blogging Site</h2>
+      <hr />
+      <h4 class="tagline">
+        Explore, Learn, Share: Embark on a Journey of Knowledge and Discovery
+      </h4>
+    </div>
 
-    
+    <div class="container mt-5">
+      <div class="row justify-content-md-center">
+        <!-- <div class="col-md-6">
+          <h3>Featured Posts</h3>
+          <div class="card mb-4">
+            <img src="image1.jpg" class="card-img-top" alt="Image 1" />
+            <div class="card-body">
+              <h5 class="card-title">Mastering the Art of Photography</h5>
+              <p class="card-text">
+                Unlock the secrets to capturing stunning photos that tell a
+                story.
+              </p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+         </div>  -->
+        <div class="col-md-6">
+          <h3>Your Recent Blog Posts</h3>
+          <div class="list-group">
+            <%if(blogs){%> <%for(let blog of blogs){%>
+            <a
+              href="/blogs/<%= blog.id %>"
+              class="list-group-item list-group-item-action"
+            >
+              <h5 class="mb-1"><%=blog.title%></h5>
+              <p class="mb-1"><%= blog.description%></p>
+            </a>
+            <%}}else{%>
+            <a href="#" class="list-group-item list-group-item-action">
+              <h5 class="mb-1">Recent Blog</h5>
+              <p class="mb-1">Your recent blog will be shown here.</p>
+            </a>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script>src="public/js/bootstrap.min.js"</script>
-</body>
+    <div class="container mt-5">
+      <h3>Explore by Category</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Technology</h5>
+              <p class="card-text">
+                Discover the latest trends and innovations in the world of
+                technology.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Lifestyle</h5>
+              <p class="card-text">
+                Explore tips and advice for enhancing your daily lifestyle.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Health</h5>
+              <p class="card-text">
+                Stay informed about physical and mental well-being.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>About the Blog/Website</h3>
+      <p>
+        Welcome to Blogging Site, your go-to source for insightful articles and
+        practical advice. Our mission is to provide you with well-researched and
+        engaging content that enriches your knowledge and inspires personal
+        growth. Our team of experienced writers and experts is dedicated to
+        delivering valuable content across various topics, from technology and
+        lifestyle to health and beyond. Join us on this journey of exploration
+        and discovery!
+      </p>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Join Our Community</h3>
+          <p>
+            Stay updated with the latest articles and exclusive content by
+            subscribing to our newsletter.
+          </p>
+          <a href="#" class="btn btn-primary">Subscribe</a>
+        </div>
+        <div class="col-md-6">
+          <h3>Download Our E-Book</h3>
+          <p>
+            Unlock your potential with our comprehensive e-book: "Unlocking Your
+            Potential".
+          </p>
+          <a href="#" class="btn btn-outline-primary">Download</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>Testimonials</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p>
+                  "The articles on Blogging Site have transformed my perspective
+                  and enriched my knowledge. Highly recommended!"
+                </p>
+                <footer class="blockquote-footer">John Doe</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p>
+                  "I'm consistently impressed by the depth of research and
+                  clarity of writing. Blogging Site is a must-read."
+                </p>
+                <footer class="blockquote-footer">Jane Smith</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>Popular Posts</h3>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+          <h5 class="mb-1">The Art of Mindful Parenting</h5>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <h5 class="mb-1">Exploring Culinary Delights</h5>
+        </a>
+        <!-- Add more popular posts here -->
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>Connect with Us</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <p>Facebook: [Followers Count]</p>
+        </div>
+        <div class="col-md-4">
+          <p>Twitter: [Followers Count]</p>
+        </div>
+        <div class="col-md-4">
+          <p>Instagram: [Followers Count]</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-5 py-3 bg-light">
+      <div class="container text-center">
+        <p>
+          Contact Us:
+          <a href="umerfarooqamjad2000@gmail.com"
+            >umerfarooqamjad2000@gmail.com</a
+          >
+          | Phone: (92) 313-6304133
+        </p>
+        <p>&copy; 2023 Blogging Site. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+      </div>
+    </footer>
+
+    <!-- Optional: You can use Bootstrap's JavaScript functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

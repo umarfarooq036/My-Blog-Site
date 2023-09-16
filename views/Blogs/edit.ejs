@@ -10,6 +10,7 @@
   </head>
   <body>
     <%- include("../partials/navbar.ejs")%>
+
     <div class="container">
       <h1>Edit Blog</h1>
       <form action="/blogs/<%=foundBlog.id%>?_method=patch" method="post">
@@ -25,13 +26,14 @@
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
-          <input
-            type="text"
+          <textarea
             class="form-control"
             id="description"
             name="description"
-            value="<%=foundBlog.description%>"
-          />
+            rows="4"
+            cols="50"
+          ><%=foundBlog.description%></textarea
+          >
         </div>
 
         <div class="mb-3">

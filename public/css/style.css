@@ -1,3 +1,49 @@
 img{
     width: 40%;
 }
+.login_button{
+    float: right;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+.blog_author{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-top: 3vh;
+}
+.tagline{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif
+}
+.searchAndAuthor{
+    display: flex;
+    flex-direction:column ;
+    gap: 10px;
+}
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.card .card-body{
+    text-align: center;
+}
+.card .blog-pic{
+    width: 20rem;
+}
+
+
+
+
+@media-query  (max-width: 600px) {
+    .login_button{
+        float: none !important ;
+        font-size: small;
+    }
+
+}

@@ -5,23 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Blogs</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <%- include("../partials/navbar.ejs") %>
-    <div class="container">
-      <h1>All Blogs</h1>
+    <%- include("../partials/navbar.ejs", {name}) %>
+
+    <div class="container" style="max-width: 1300px">
+      <div class="blog_author">
+        <h1>All Blogs</h1>
+        <div class="searchAndAuthor">
+          <div>
+            <!-- <form class="d-flex" action="/search">
+              <label for="search"></label>
+              <input
+                id="search"
+                name="search"
+                class="form-control me-2"
+                type="text"
+                placeholder="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form> -->
+            <form id="search-form" class="d-flex" action="/search" method="GET">
+              <input
+                class="form-control me-2"
+                type="search"
+                name="q"
+                placeholder="Search..."
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+          <div class="name"><strong>Author:</strong> <%=name%></div>
+        </div>
+      </div>
+
       <hr />
-      <%for (let blog of blogs){%>
+      <% if(blogs && blogs[0]){%> <%for (let blog of blogs){%>
       <h3><%=blog.title%></h3>
       <img src="<%=blog.image%>" alt="" />
       <p><%=blog.description%></p>
       <a href="/blogs/<%= blog.id %>" class="btn btn-warning">More</a>
       <hr />
+      <%}} else{%>
+      <h3 style="text-align: center">No Blog Found!</h3>
       <%}%>
     </div>
-  
-    <script>public/js/bootstrap.min.js</script>
+    <script>
+      public / js / bootstrap.min.js;
+    </script>
   </body>
 </html>

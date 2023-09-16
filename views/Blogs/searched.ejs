@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search results</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs", {name}) %>
+
+    <div class="container" style="max-width: 1300px">
+      <div class="blog_author">
+        <h1>Searched Results</h1>
+        <div class="searchAndAuthor">
+          <div>
+            <!-- <form class="d-flex" action="/search">
+              <label for="search"></label>
+              <input
+                id="search"
+                name="search"
+                class="form-control me-2"
+                type="text"
+                placeholder="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form> -->
+            <form id="search-form" class="d-flex" action="/search" method="GET">
+              <input
+                class="form-control me-2"
+                type="text"
+                name="q"
+                placeholder="Search..."
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+          <div class="name"><strong>Author:</strong> <%=name%></div>
+        </div>
+      </div>
+
+      <hr />
+      <!-- <%= results%>  -->
+      <% if(results && results[0]){ for (let blog of results){%>
+        <%const createdAtDate = new Date(blog.createdAt);
+    const currentTime = Date.now();
+    const timeDifferenceInMilliseconds = currentTime - createdAtDate.getTime();
+
+    // Calculate time difference in seconds
+    const timeDifferenceInSeconds = Math.floor(timeDifferenceInMilliseconds / 1000);
+
+    let timeAgo;
+    if (timeDifferenceInSeconds < 60) {
+      timeAgo = `${timeDifferenceInSeconds} seconds ago`;
+    } else if (timeDifferenceInSeconds < 3600) {
+      const minutes = Math.floor(timeDifferenceInSeconds / 60);
+      timeAgo = `${minutes} minutes ago`;
+    } else if (timeDifferenceInSeconds < 86400) {
+      const hours = Math.floor(timeDifferenceInSeconds / 3600);
+      timeAgo = `${hours} hours ago`;
+    } else {
+      const days = Math.floor(timeDifferenceInSeconds / 86400);
+      timeAgo = `${days} days ago`;
+    }
+  %>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"><%=blog.title%></h3>
+          <p class="card-text"><%=blog.description%></p>
+          <p class="card-text">
+            <small class="text-muted">Last updated <%=timeAgo%></small>
+          </p>
+        </div>
+        <div class="blog-pic">
+          <img class="card-img" src= <%= blog.image%> alt="Card image cap"
+          />
+        </div>
+      </div>
+      <hr />
+      <%}} else{%>
+      <div style="margin: auto; text-align: center">
+        <h2>No result found!</h2>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>
